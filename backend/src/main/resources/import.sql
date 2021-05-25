@@ -12,6 +12,19 @@ INSERT INTO tb_category (name) VALUES ('Retrovisor');
 INSERT INTO tb_category (name) VALUES ('Desliga Rádio');
 
 
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('CHEVROLET','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('FIAT','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('FORD','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('VOLKSWAGEN','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('RENAULT','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('HONDA','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('TOYOTA','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('CITROEN','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('MERCEDES','Http://wwww.image.com');
+INSERT INTO tb_manufacturer (name,url_Image) VALUES ('HYUNDAI','Http://wwww.image.com');
+
+
+
 INSERT INTO tb_product (name,model,warranty,description,complement,url_Manual,url_Video,url_Wiring_Diagram, url_Img_Prod) VALUES ('AW52', 'AA.29.0016', 2, 'Efetuar a instalação de levantamento no botão do vidro','Seguir esquema de levantamanto dos vidros do manual INFINITY','http://www.softautomotiva.com.br/esquemas/GM/ONIX_JOY_PRISMA_JOY_COBALT_PP_AA.29.0025.PNG', 'https://www.youtube.com/watch?v=Zovr9rpeEOE&t=89s','http://www.softautomotiva.com.br/esquemas/GM/ONIX_JOY_PRISMA_JOY_COBALT_PP_AW32', 'http://www.softautomotiva.com.br/images/cve_aw52.jpg?crc=3783142226');
 INSERT INTO tb_product (name,model,warranty,description,complement,url_Manual,url_Video,url_Wiring_Diagram, url_Img_Prod) VALUES ('AW32', 'AA.29.0016', 2, 'Efetuar a instalação de levantamento no botão do vidro','Seguir esquema de levantamanto dos vidros do manual INFINITY','http://www.softautomotiva.com.br/esquemas/GM/ONIX_JOY_PRISMA_JOY_COBALT_PP_AA.29.0025.PNG', 'https://www.youtube.com/watch?v=Zovr9rpeEOE&t=89s','http://www.softautomotiva.com.br/esquemas/GM/ONIX_JOY_PRISMA_JOY_COBALT_PP_AW32', 'http://www.softautomotiva.com.br/images/cve_aw52.jpg?crc=3783142226');
 INSERT INTO tb_product (name,model,warranty,description,complement,url_Manual,url_Video,url_Wiring_Diagram, url_Img_Prod) VALUES ('One', 'AA.29.0016', 2, 'Efetuar a instalação de levantamento no botão do vidro','Seguir esquema de levantamanto dos vidros do manual INFINITY','http://www.softautomotiva.com.br/esquemas/GM/ONIX_JOY_PRISMA_JOY_COBALT_PP_AA.29.0025.PNG', 'https://www.youtube.com/watch?v=Zovr9rpeEOE&t=89s','http://www.softautomotiva.com.br/esquemas/GM/ONIX_JOY_PRISMA_JOY_COBALT_PP_AW32', 'http://www.softautomotiva.com.br/images/cve_aw52.jpg?crc=3783142226');
