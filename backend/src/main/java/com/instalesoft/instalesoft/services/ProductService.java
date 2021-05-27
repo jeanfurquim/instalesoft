@@ -87,6 +87,7 @@ public class ProductService {
 		entity.setUrlVideo(dto.getUrlVideo());
 		entity.setUrlWiringDiagram(dto.getUrlWiringDiagram());
 		entity.setUrlImgProd(dto.getUrlImgProd());
+	
 
 		entity.getCategories().clear();
 		for (CategoryDTO catDto : dto.getCategories()) {

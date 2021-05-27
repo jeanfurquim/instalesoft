@@ -1,33 +1,44 @@
 package com.instalesoft.instalesoft.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_manufacturer")
-public class Manufacturer implements Serializable {
+@Table(name = "tb_car")
+public class Car implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String urlImage;
-
+	private String year;
 	
+	@ManyToMany
+	@JoinTable(name = "tb_car_manufacturer", 
+	joinColumns = @JoinColumn(name = "car_id"), 
+	inverseJoinColumns = @JoinColumn(name = "manufacturer_id")
 
-	public Manufacturer() {
+	)
+	Set<Manufacturer> manufactures = new HashSet<>();
+
+	public Car() {
 	}
 
-	public Manufacturer(Long id, String name, String urlImage) {
+	public Car(Long id, String name, String year ) {
 		this.id = id;
 		this.name = name;
-		this.urlImage = urlImage;
+		this.year = year;
 	}
 
 	public Long getId() {
@@ -46,15 +57,19 @@ public class Manufacturer implements Serializable {
 		this.name = name;
 	}
 
-	public String getUrlImage() {
-		return urlImage;
-	}
-
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
-	}
-
 	
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public Set<Manufacturer> getManufactures() {
+		return manufactures;
+	}
 
 	@Override
 	public int hashCode() {
@@ -72,7 +87,7 @@ public class Manufacturer implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Manufacturer other = (Manufacturer) obj;
+		Car other = (Car) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
