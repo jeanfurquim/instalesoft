@@ -1,16 +1,13 @@
 package com.instalesoft.instalesoft.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,22 +20,22 @@ public class Car implements Serializable {
 	private Long id;
 	private String name;
 	private String year;
-	
-	@ManyToMany
-	@JoinTable(name = "tb_car_manufacturer", 
-	joinColumns = @JoinColumn(name = "car_id"), 
-	inverseJoinColumns = @JoinColumn(name = "manufacturer_id")
 
-	)
-	Set<Manufacturer> manufactures = new HashSet<>();
+	@ManyToOne
+	@JoinColumn(name = "manufacturer_id")
+	private Manufacturer manufacturer;
+
+	/*@OneToMany(mappedBy = "cars")
+	private List<Product> products = new ArrayList<>();*/
 
 	public Car() {
 	}
 
-	public Car(Long id, String name, String year ) {
+	public Car(Long id, String name, String year, Manufacturer manufacturer) {
 		this.id = id;
 		this.name = name;
 		this.year = year;
+		this.manufacturer = manufacturer;
 	}
 
 	public Long getId() {
@@ -57,8 +54,6 @@ public class Car implements Serializable {
 		this.name = name;
 	}
 
-	
-
 	public String getYear() {
 		return year;
 	}
@@ -67,9 +62,21 @@ public class Car implements Serializable {
 		this.year = year;
 	}
 
-	public Set<Manufacturer> getManufactures() {
-		return manufactures;
+	public Manufacturer getManufacturer() {
+		return manufacturer;
 	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	/*public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}*/
 
 	@Override
 	public int hashCode() {

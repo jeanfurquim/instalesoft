@@ -1,12 +1,8 @@
 package com.instalesoft.instalesoft.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import com.instalesoft.instalesoft.entities.Car;
-import com.instalesoft.instalesoft.entities.Manufacturer;
 
 public class CarDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,16 +10,18 @@ public class CarDTO implements Serializable {
 	private Long id;
 	private String name;
 	private String year;
+	private String manufacturerId;
 
-	private List<ManufacturerDTO> manufactures = new ArrayList<>();
+
 
 	public CarDTO() {
 	}
 
-	public CarDTO(Long id, String name, String year) {
+	public CarDTO(Long id, String name, String year, String manufacturerId) {
 		this.id = id;
 		this.name = name;
 		this.year = year;
+		this.manufacturerId = manufacturerId;
 
 	}
 
@@ -31,14 +29,10 @@ public class CarDTO implements Serializable {
 		this.id = entity.getId();
 		this.name = entity.getName();
 		this.year = entity.getYear();
-
+		this.manufacturerId = entity.getManufacturer().getName();
 	}
 
-	public CarDTO(Car entity, Set<Manufacturer> manufactures) {
-		this(entity);
-		manufactures.forEach(cat -> this.manufactures.add(new ManufacturerDTO(cat)));
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -63,12 +57,16 @@ public class CarDTO implements Serializable {
 		this.year = year;
 	}
 
-	public List<ManufacturerDTO> getManufactures() {
-		return manufactures;
+	public String getManufacturerId() {
+		return manufacturerId;
 	}
 
-	public void setManufacturer(List<ManufacturerDTO> manufactures) {
-		this.manufactures = manufactures;
+	public void setManufacturerId(String manufacturerId) {
+		this.manufacturerId = manufacturerId;
 	}
+
+
+
+	
 
 }

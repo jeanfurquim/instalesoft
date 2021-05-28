@@ -1,11 +1,14 @@
 package com.instalesoft.instalesoft.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +21,9 @@ public class Manufacturer implements Serializable {
 	private Long id;
 	private String name;
 	private String urlImage;
-
 	
+	@OneToMany(mappedBy ="manufacturer" )
+	private List<Car> cars = new ArrayList<>();
 
 	public Manufacturer() {
 	}
@@ -53,8 +57,16 @@ public class Manufacturer implements Serializable {
 	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
 	}
-
 	
+	
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
 
 	@Override
 	public int hashCode() {

@@ -22,12 +22,12 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
 	private String model;
-	
+
 	private Integer warranty;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	@Column(columnDefinition = "TEXT")
@@ -41,10 +41,12 @@ public class Product implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String urlImgProd;
 
+	/*@ManyToOne
+	@JoinColumn(name="car_id")
+	private Car cars;*/
+
 	@ManyToMany
-	@JoinTable(name = "tb_product_category", 
-	joinColumns = @JoinColumn(name = "product_id"), 
-	inverseJoinColumns = @JoinColumn(name = "category_id")
+	@JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id")
 
 	)
 	Set<Category> categories = new HashSet<>();
@@ -64,6 +66,7 @@ public class Product implements Serializable {
 		this.urlVideo = urlVideo;
 		this.urlWiringDiagram = urlWiringDiagram;
 		this.urlImgProd = urlImgProd;
+
 	}
 
 	public Long getId() {
@@ -150,6 +153,7 @@ public class Product implements Serializable {
 		return categories;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
