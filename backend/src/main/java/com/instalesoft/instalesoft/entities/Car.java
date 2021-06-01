@@ -1,12 +1,16 @@
 package com.instalesoft.instalesoft.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,9 +28,17 @@ public class Car implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "manufacturer_id")
 	private Manufacturer manufacturer;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_car_product", 
+	joinColumns = @JoinColumn(name = "car_id"), 
+	inverseJoinColumns = @JoinColumn(name = "product_id"))
+	Set<Product> products = new HashSet<>();
+	
+	private Category categories;
+	
+	
 
-	/*@OneToMany(mappedBy = "cars")
-	private List<Product> products = new ArrayList<>();*/
 
 	public Car() {
 	}
@@ -69,14 +81,17 @@ public class Car implements Serializable {
 	public void setManufacturer(Manufacturer manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-
-	/*public List<Product> getProducts() {
+	public Set<Product> getProducts() {
 		return products;
 	}
+	
+	public Category getCategories() {
+		return categories;
+	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}*/
+	public void setCategory(Category categories) {
+		this.categories = categories;
+	}
 
 	@Override
 	public int hashCode() {

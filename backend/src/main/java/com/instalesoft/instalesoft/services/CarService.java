@@ -13,8 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.instalesoft.instalesoft.dto.CarDTO;
+import com.instalesoft.instalesoft.dto.ProductDTO;
 import com.instalesoft.instalesoft.entities.Car;
+import com.instalesoft.instalesoft.entities.Product;
 import com.instalesoft.instalesoft.repositories.CarRepository;
+import com.instalesoft.instalesoft.repositories.CategoryRepository;
+import com.instalesoft.instalesoft.repositories.ProductRepository;
 import com.instalesoft.instalesoft.services.exceptions.DatabaseException;
 import com.instalesoft.instalesoft.services.exceptions.ResourceNotFoundException;
 
@@ -23,6 +27,12 @@ public class CarService {
 
 	@Autowired
 	private CarRepository repository;
+
+	@Autowired
+	private ProductRepository productRepository;
+
+
+	
 
 	@Transactional(readOnly = true)
 	public Page<CarDTO> findAllPaged(PageRequest pageRequest) {
@@ -34,13 +44,13 @@ public class CarService {
 	public CarDTO findById(Long id) {
 		Optional<Car> obj = repository.findById(id);
 		Car entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-		return new CarDTO(entity);
+		return new CarDTO(entity, entity.getProducts());
 	}
 
 	@Transactional
 	public CarDTO insert(CarDTO dto) {
 		Car entity = new Car();
-		//copyToDtoEntity(dto, entity);
+		copyToDtoEntity(dto, entity);
 		entity = repository.save(entity);
 		return new CarDTO(entity);
 	}
@@ -50,7 +60,7 @@ public class CarService {
 		try {
 			@SuppressWarnings("deprecation")
 			Car entity = repository.getOne(id);
-			//copyToDtoEntity(dto, entity);
+			copyToDtoEntity(dto, entity);
 			entity = repository.save(entity);
 			return new CarDTO(entity);
 		} catch (EntityNotFoundException e) {
@@ -70,18 +80,18 @@ public class CarService {
 		}
 	}
 
-	/*private void copyToDtoEntity(CarDTO dto, Car entity) {
+	private void copyToDtoEntity(CarDTO dto, Car entity) {
 
 		entity.setName(dto.getName());
-		entity.setYear(dto.getYear());*/
-	
+		entity.setYear(dto.getYear());
 
-		/*entity.getManufactures().clear();
-		for (ManufacturerDTO catDto : dto.getManufactures()) {
+		entity.getProducts().clear();
+		for (ProductDTO catDto : dto.getProducts()) {
 			@SuppressWarnings("deprecation")
-			Manufacturer manufacturer = manufacturerRepository.getOne(catDto.getId());
-			entity.getManufactures().add(manufacturer);
-		}*/
+			Product product = productRepository.getOne(catDto.getId());
+			entity.getProducts().add(product);
+
+		}
+
 	}
-
-
+}

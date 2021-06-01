@@ -94,4 +94,14 @@ public class Category implements Serializable {
 		return true;
 	}
 
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void add(Category category) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

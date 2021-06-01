@@ -68,6 +68,8 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (19, 1);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (20, 1);
 
 
+
+
 INSERT INTO tb_car (name,year,manufacturer_id) VALUES ('Prisma','2010',1);
 INSERT INTO tb_car (name,year,manufacturer_id) VALUES ('Palio','2002',2);
 INSERT INTO tb_car (name,year,manufacturer_id) VALUES ('Focus','2020',3);
@@ -113,7 +115,18 @@ INSERT INTO tb_car (name,year,manufacturer_id) VALUES ('Fiat Uno','2014',2);
 INSERT INTO tb_car (name,year,manufacturer_id) VALUES ('Fiat Uno','2015',2);
 INSERT INTO tb_car (name,year,manufacturer_id) VALUES ('Fiat Uno','2016',2);
 
-
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,1);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,2);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,3);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,4);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,5);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,6);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,7);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,8);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,9);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,10);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,11);
+INSERT INTO tb_car_product (car_id, product_id)VALUES(1,12);
 
 
 

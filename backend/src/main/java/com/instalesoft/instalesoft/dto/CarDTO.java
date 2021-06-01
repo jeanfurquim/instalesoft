@@ -1,8 +1,12 @@
 package com.instalesoft.instalesoft.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import com.instalesoft.instalesoft.entities.Car;
+import com.instalesoft.instalesoft.entities.Product;
 
 public class CarDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -12,6 +16,9 @@ public class CarDTO implements Serializable {
 	private String year;
 	private String manufacturerId;
 
+	private List<ProductDTO> products = new ArrayList<>();
+	
+	private List<CategoryDTO> categories = new ArrayList<>();
 
 
 	public CarDTO() {
@@ -32,7 +39,13 @@ public class CarDTO implements Serializable {
 		this.manufacturerId = entity.getManufacturer().getName();
 	}
 
+	public CarDTO(Car entity, Set<Product> products) {
+		this(entity);
+		products.forEach(cat -> this.products.add(new ProductDTO(cat)));
+	}
 	
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -65,8 +78,20 @@ public class CarDTO implements Serializable {
 		this.manufacturerId = manufacturerId;
 	}
 
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
 
-
+	public void setProducts(List<ProductDTO> products) {
+		this.products = products;
+	}
 	
+	public List<CategoryDTO> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<CategoryDTO> categories) {
+		this.categories = categories;
+	}
 
 }

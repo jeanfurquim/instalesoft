@@ -41,14 +41,10 @@ public class Product implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String urlImgProd;
 
-	/*@ManyToOne
-	@JoinColumn(name="car_id")
-	private Car cars;*/
-
 	@ManyToMany
-	@JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id")
-
-	)
+	@JoinTable(name = "tb_product_category", 
+	joinColumns = @JoinColumn(name = "product_id"), 
+	inverseJoinColumns = @JoinColumn(name = "category_id"))
 	Set<Category> categories = new HashSet<>();
 
 	public Product() {
@@ -153,7 +149,6 @@ public class Product implements Serializable {
 		return categories;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
